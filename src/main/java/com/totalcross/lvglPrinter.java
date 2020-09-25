@@ -9,9 +9,6 @@ import totalcross.sys.Settings;
 public class lvglPrinter extends MainWindow {
 
     public lvglPrinter() {
-        // Set UI style as Material UI
-        setUIStyle(Settings.MATERIAL_UI);
-
         // Set the background color
         setBackColor(Colors.COLOR_DEEP_BLUE);
     }

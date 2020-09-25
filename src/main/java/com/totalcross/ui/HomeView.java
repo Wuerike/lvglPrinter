@@ -22,35 +22,53 @@ public class HomeView extends Container {
     }
 
 
-    private String getMessage(){
-        // Do something to get the message
-        return "What do you want to do today?";
-    }
-
-
     public void initUI() {
 
         /**
          * Criar os containers
          */
-        add(cEmptyArea = new Container(), MaterialConstants.MC1W , MaterialConstants.MC35H , FILL-MaterialConstants.MC1W , FILL-MaterialConstants.MC1W);
+        add(cEmptyArea = new Container(),
+                MaterialConstants.MC1W,
+                MaterialConstants.MC35H,
+                FILL-MaterialConstants.MC1W,
+                FILL-MaterialConstants.MC1W);
         cEmptyArea.setBackColor(Colors.COLOR_LIGHT_GRAY);
 
-        add(cTopIcons = new Container(), MaterialConstants.MC5W , MaterialConstants.MC8H , FILL-MaterialConstants.MC50W , MaterialConstants.MC8H);
+        add(cTopIcons = new Container(),
+                MaterialConstants.MC5W,
+                MaterialConstants.MC8H,
+                FILL-MaterialConstants.MC50W,
+                MaterialConstants.MC8H);
         cTopIcons.setBackColor(Colors.COLOR_DEEP_BLUE);
 
-        add(cDateTime = new Container(), AFTER + MaterialConstants.MC5W , MaterialConstants.MC8H , FILL-MaterialConstants.MC5W , MaterialConstants.MC8H);
+        add(cDateTime = new Container(),
+                AFTER + MaterialConstants.MC5W,
+                MaterialConstants.MC8H,
+                FILL-MaterialConstants.MC5W,
+                MaterialConstants.MC8H);
         cDateTime.setBackColor(Colors.COLOR_DEEP_BLUE);
 
-        add(cMain = new Container(), MaterialConstants.MC5W , AFTER + MaterialConstants.MC7H , FILL-MaterialConstants.MC5W , MaterialConstants.MC50H);
+        add(cMain = new Container(),
+                MaterialConstants.MC5W,
+                AFTER + MaterialConstants.MC7H,
+                FILL-MaterialConstants.MC5W,
+                MaterialConstants.MC50H);
         cMain.setBorderStyle(BORDER_ROUNDED);
         cMain.setBackForeColors(Colors.COLOR_WHITE, Colors.COLOR_WHITE);
 
-        add(cMessage = new Container(), MaterialConstants.MC5W , AFTER+MaterialConstants.MC4H , FILL-MaterialConstants.MC30W , MaterialConstants.MC15H);
+        add(cMessage = new Container(),
+                MaterialConstants.MC5W,
+                AFTER+MaterialConstants.MC4H,
+                FILL-MaterialConstants.MC30W,
+                MaterialConstants.MC15H);
         cMessage.setBorderStyle(BORDER_ROUNDED);
         cMessage.setBackForeColors(Colors.COLOR_WHITE, Colors.COLOR_WHITE);
 
-        add(cColorLevel = new Container(), AFTER + MaterialConstants.MC5W , cMessage.getY() , FILL-MaterialConstants.MC5W , MaterialConstants.MC15H);
+        add(cColorLevel = new Container(),
+                AFTER + MaterialConstants.MC5W,
+                cMessage.getY(),
+                FILL-MaterialConstants.MC5W,
+                MaterialConstants.MC15H);
         cColorLevel.setBorderStyle(BORDER_ROUNDED);
         cColorLevel.setBackForeColors(Colors.COLOR_WHITE, Colors.COLOR_WHITE);
 
@@ -75,6 +93,7 @@ public class HomeView extends Container {
          * Cria e adiciona a label de data e hora
          */
         lDateTime = new Label(getDateTime());
+
         // Faz com que a fonte ajuste seu tamanho para ocupar 80% do comprimento do container
         for (int i=1; lDateTime.getPreferredWidth() < cDateTime.getWidth()*0.8; i++){
             lDateTime.setFont(Font.getFont(i++));
@@ -144,11 +163,13 @@ public class HomeView extends Container {
         /**
          * Cria e adiciona a label de mensagem
          */
-        lMessage = new Label(getMessage());
+        lMessage = new Label("What do you want to do today?");
+
         // Faz com que a fonte ajuste seu tamanho para ocupar 60% do comprimento do container
         for (int i=1; lMessage.getPreferredWidth() < cMessage.getWidth()*0.6; i++){
             lMessage.setFont(Font.getFont(i++));
         }
+
         lMessage.setForeColor(Colors.COLOR_BLACK);
         cMessage.add(lMessage, CENTER, CENTER);
 
@@ -156,37 +177,34 @@ public class HomeView extends Container {
          * Checa o nivel da tinta
          */
 
-        int verticalEmptySpace2 = (int) (cColorLevel.getWidth()*0.08);
+        int horizontalEmptySpace2 = (int) (cColorLevel.getWidth()*0.08);
         int fieldWidth = (int) (cColorLevel.getWidth()*0.15);
 
-        int horizontalEmptySpace2 = (int) (cColorLevel.getHeight()*0.1);
-        int fieldHeight = (int) (cColorLevel.getHeight()*0.8);
 
-        int blueLevel = fieldHeight - (int) (fieldHeight*0.3);
-        int purbleLevel = fieldHeight - (int) (fieldHeight*0.7);
-        int yellowLevel = fieldHeight - (int) (fieldHeight*0.2);
-        int blackLevel = fieldHeight - (int) (fieldHeight*0.8);
+        int blueLevel = (int) (cColorLevel.getHeight() * 1);
+        int purbleLevel = (int) (cColorLevel.getHeight() * 0.7);
+        int yellowLevel = (int) (cColorLevel.getHeight() * 0.2);
+        int blackLevel = (int) (cColorLevel.getHeight() * 0.8);
 
         cBlueLevel = new Container();
         cBlueLevel.setBackColor(Colors.COLOR_LIGHT_BLUE);
         cBlueLevel.setBorderStyle(BORDER_ROUNDED);
-        cColorLevel.add(cBlueLevel, verticalEmptySpace2, horizontalEmptySpace2 + (int) (fieldHeight*0.3), fieldWidth, blueLevel);
+        cColorLevel.add(cBlueLevel, horizontalEmptySpace2, BOTTOM, fieldWidth, blueLevel);
 
         cPurpleLevel = new Container();
         cPurpleLevel.setBackColor(Colors.COLOR_PURPLE);
         cPurpleLevel.setBorderStyle(BORDER_ROUNDED);
-        cColorLevel.add(cPurpleLevel, AFTER+verticalEmptySpace2, horizontalEmptySpace2 + (int) (fieldHeight*0.7), fieldWidth, purbleLevel);
+        cColorLevel.add(cPurpleLevel, AFTER+horizontalEmptySpace2, BOTTOM, fieldWidth, purbleLevel);
 
         cYellowLevel = new Container();
         cYellowLevel.setBackColor(Colors.COLOR_YELLOW);
         cYellowLevel.setBorderStyle(BORDER_ROUNDED);
-        cColorLevel.add(cYellowLevel, AFTER+verticalEmptySpace2, horizontalEmptySpace2 + (int) (fieldHeight*0.2), fieldWidth, yellowLevel);
+        cColorLevel.add(cYellowLevel, AFTER+horizontalEmptySpace2, BOTTOM, fieldWidth, yellowLevel);
 
         cBlackLevel = new Container();
         cBlackLevel.setBackColor(Colors.COLOR_BLACK);
         cBlackLevel.setBorderStyle(BORDER_ROUNDED);
-        cColorLevel.add(cBlackLevel, AFTER+verticalEmptySpace2, horizontalEmptySpace2 + (int) (fieldHeight*0.8), fieldWidth,  blackLevel);
+        cColorLevel.add(cBlackLevel, AFTER+horizontalEmptySpace2, BOTTOM, fieldWidth,  blackLevel);
 
     }
-
 }

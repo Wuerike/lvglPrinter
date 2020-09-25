@@ -30,7 +30,8 @@ public class CardButton extends Container {
         this.iIconImage = IconImage;
 
         try {
-            add(new ImageControl(this.iIconImage.smoothScaledFixedAspectRatio((int)(this.cardWidth*0.40), false)),(int) (RIGHT-cardWidth*0.10),(int) (cardWidth*0.10));
+            add(new ImageControl(this.iIconImage.smoothScaledFixedAspectRatio((int)(this.cardWidth*0.40), false)),
+                                (int) (RIGHT-cardWidth*0.10),(int) (cardWidth*0.10));
         } catch (Exception e) {
             MessageBox.showException(e, true);
         }
