@@ -11,12 +11,23 @@ import totalcross.ui.event.PenEvent;
 import totalcross.ui.font.Font;
 import totalcross.ui.image.Image;
 
+/**
+ * Class that defines the main buttons used in the HomeView
+ */
 public class CardButton extends Container {
     int cardWidth, cardHeight;
     int cardBackground, cardForeground;
     Image iIconImage;
     Label lCardLabel;
 
+
+    /**
+     * Constructor
+     * @param cardWidth
+     * @param cardHeight
+     * @param cardBackground
+     * @param cardForeground
+     */
     public CardButton(int cardWidth, int cardHeight, int cardBackground, int cardForeground) {
         this.cardWidth = cardWidth;
         this.cardHeight = cardHeight;
@@ -26,6 +37,11 @@ public class CardButton extends Container {
         setBorderStyle(BORDER_ROUNDED);
     }
 
+    /**
+     * It receive an Image to use as an icon
+     * The image is scaled by setting its width 40% of the received CardButton width size
+     * Then it's positioned at 10% of the right border and 10% from the top
+     */
     public void setIconImage(Image IconImage) {
         this.iIconImage = IconImage;
 
@@ -37,6 +53,12 @@ public class CardButton extends Container {
         }
     }
 
+    /**
+     * It receive a String to use as an label
+     * The background and foreground are setted with the same colors as the CardButton
+     * The for loop looks for the bigger font size while keeping its width at 50% of the CardButton width
+     * The label is positioned at 10% of the CardButton width from de left and 5% from the bottom
+     */
     public void setCardLabel(String cardText) {
         this.lCardLabel = new Label(cardText);
         this.lCardLabel.setBackForeColors(this.cardBackground, this.cardForeground);
@@ -48,6 +70,12 @@ public class CardButton extends Container {
 
         add(this.lCardLabel, (int)(LEFT + (cardWidth*0.10)), (int)((BOTTOM) - (cardWidth*0.05)));
     }
+
+    /**
+     * Overrides the onEvent method
+     * An event is posted when you click the container and then release (PEN_UP)
+     * Others kind of events can be defined at this method
+     */
 
     @Override
     public <H extends EventHandler> void onEvent(Event<H> event) {

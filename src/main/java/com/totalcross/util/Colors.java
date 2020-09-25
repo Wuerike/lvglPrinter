@@ -1,7 +1,7 @@
 package com.totalcross.util;
 
 /**
- * Class with constants that represent the colors used in this project
+ * Class with constants that represent every color used in the GUI
  */
 public class Colors {
     public static final int COLOR_WHITE = 0xffffff;

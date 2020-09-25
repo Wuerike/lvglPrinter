@@ -4,7 +4,7 @@ import totalcross.ui.dialog.MessageBox;
 import totalcross.ui.image.Image;
 
 /**
- * Class that load and store the used images
+ * Class that loads and stores the used images
  */
 public class Images {
     // Declaring the variables.

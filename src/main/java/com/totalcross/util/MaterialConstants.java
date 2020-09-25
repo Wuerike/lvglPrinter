@@ -4,7 +4,7 @@ import totalcross.sys.Settings;
 
 /**
  * Class with constants to help letting the UI responsive
- * Each constant has a percent value related with the screen width and height
+ * Each constant has a percentage value related with the screen width and height
  * MCxW means x percent of the total width
  * MCyH means y percent pf the total height
  */
